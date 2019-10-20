@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBuildingsIdToDeposits extends Migration
+class AddBuildingsIdToExpenses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddBuildingsIdToDeposits extends Migration
      */
     public function up()
     {
-        Schema::table('deposits', function (Blueprint $table) {
+        Schema::table('expenses', function (Blueprint $table) {
             $table->unsignedBigInteger('buildings_id')->unsigned()->index();
             $table->foreign('buildings_id')->references('id')->on('buildings')->onDelete('cascade');
+            $table->unsignedBigInteger('flats_id')->unsigned()->index();
+            $table->foreign('flats_id')->references('id')->on('flats')->onDelete('cascade');
         });
     }
 
@@ -26,7 +28,7 @@ class AddBuildingsIdToDeposits extends Migration
      */
     public function down()
     {
-        Schema::table('_deposits', function (Blueprint $table) {
+        Schema::table('expenses', function (Blueprint $table) {
             //
         });
     }

@@ -121,7 +121,10 @@
     export default {
         data() {
                 return{
-                   form:{},
+                   form:{
+                       "name": '',
+
+                   },
                    buildings:[],
                    flats:[],
                 }
@@ -160,7 +163,7 @@
                         })
                         .then(res => res.json())
                         .then(data => {
-                            window.location.reload();
+                            window.location.href = '/rental-agreement';
                         })
                         .catch(err => console.log(err))
                         })

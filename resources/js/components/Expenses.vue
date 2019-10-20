@@ -47,6 +47,24 @@
                             </div>
                             
                             <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">Building</label>
+                                    <select v-model="form.buildings_id" @change="getFlatByBuilding($event)" id="inputState" class="form-control">
+                                        <option disabled selected value="">Select Building</option>
+                                        <option v-bind:value="building.id" v-for="building in buildings" v-bind:key="building.id">
+                                        {{ building.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">Flat</label>
+                                    <select v-model="form.flats_id" id="inputState" class="form-control">
+                                        <option disabled selected value="">Select Flat</option>
+                                        <option v-bind:value="flat.id" v-for="flat in flatsList" v-bind:key="flat.id">
+                                        {{ flat.name }}
+                                        </option>
+                                    </select>
+                                </div>
                                 <div class="form-group col-md-10">
                                     <label for="exampleTextarea1">Remarks</label>
                                     <textarea v-model="form.comment" class="form-control" id="exampleTextarea1" rows="2" placeholder="Remarks"></textarea>
@@ -110,11 +128,13 @@
     export default {
         data(){
             return{
+                flatsList:[],
                 form:{},
+                buildings:[],
             }
         },
         created(){
-            // this.getBuilding();
+            this.getBuilding();
         },
         methods:{
             onSaveExpenses(){
@@ -132,14 +152,22 @@
                 })
                 .catch(err => console.log(err))
             },
-            // getBuilding(){
-            //     fetch('/api/buildings')
-            //     .then(res => res.json())
-            //     .then(res => {
-            //         this.buildings = res.data;
-            //         console.log(this.buildings);
-            //     })
-            // },
+            getBuilding(){
+                fetch('/api/buildings')
+                .then(res => res.json())
+                .then(res => {
+                    this.buildings = res.data;
+                    console.log(this.buildings);
+                })
+            },
+            getFlatByBuilding(event){
+                fetch('api/'+event.target.value+'/flats/')
+                .then(res => res.json())
+                .then(res => {
+                    this.flatsList = res.data;
+                    console.log(this.flatsList);
+                })
+            },
         }
     }
 </script>

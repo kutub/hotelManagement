@@ -28,4 +28,6 @@ Route::apiResource('/deposit', 'DepositController');
 Route::get('/{building}/flats', 'FlatsController@index');
 Route::apiResource('/expenses', 'ExpensesController');
 Route::apiResource('/withdraw', 'WithdrawalController');
+Route::apiResource('/dashboard', 'DashboardController');
+
 

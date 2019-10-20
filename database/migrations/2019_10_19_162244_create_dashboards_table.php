@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCreatedByToWithdrawals extends Migration
+class CreateDashboardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddCreatedByToWithdrawals extends Migration
      */
     public function up()
     {
-        Schema::table('withdrawals', function (Blueprint $table) {
-            $table->string('created_by');
+        Schema::create('dashboards', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class AddCreatedByToWithdrawals extends Migration
      */
     public function down()
     {
-        Schema::table('withdrawals', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('dashboards');
     }
 }

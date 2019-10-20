@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Expenses;
-use App\Http\Resources\ExpensesResource;
+use App\Dashboard;
 use Illuminate\Http\Request;
-
-class ExpensesController extends Controller
+use App\Buildings;
+use App\Deposit;
+use App\Http\Resources\DashboardResource;
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($date)
     {
-        //
+        // $dashboard = Buildings::whereMonth('created_at', '=', '10/19/2019')->get();
+        // return DashboardResource::collection($dashboard);
     }
 
     /**
@@ -36,36 +38,28 @@ class ExpensesController extends Controller
      */
     public function store(Request $request)
     {
-        $expenses = new Expenses();
-        $expenses->expensesName = $request->expensesName;
-        $expenses->name = $request->name;
-        $expenses->total = $request->total;
-        $expenses->comment = $request->comment;
-        $expenses->buildings_id = $request->buildings_id;
-        $expenses->flats_id = $request->flats_id;
-        if($expenses->save()){
-            return new ExpensesResource($request);
-        }
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Expenses  $expenses
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(Expenses $expenses)
-    {
-        //
+    public function show($date)
+    {   
+        $dashboard = Buildings::whereMonth('created_at', '=', $date)->get();
+        return DashboardResource::collection($dashboard);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Expenses  $expenses
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(Expenses $expenses)
+    public function edit(Dashboard $dashboard)
     {
         //
     }
@@ -74,10 +68,10 @@ class ExpensesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Expenses  $expenses
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expenses $expenses)
+    public function update(Request $request, Dashboard $dashboard)
     {
         //
     }
@@ -85,10 +79,10 @@ class ExpensesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Expenses  $expenses
+     * @param  \App\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Expenses $expenses)
+    public function destroy(Dashboard $dashboard)
     {
         //
     }

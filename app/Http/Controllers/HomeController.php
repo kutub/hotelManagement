@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Buildings;
+use App\Deposit;
+use App\Http\Resources\DashboardResource;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,4 +28,6 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+    
+
 }

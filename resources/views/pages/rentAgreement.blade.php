@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="app">
-        <dashboard></dashboard>
+        <rental-agreement></rental-agreement>
     </div>
     <script src="{{asset('js/app.js')}}"></script>
 @endsection

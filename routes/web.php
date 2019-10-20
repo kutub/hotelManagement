@@ -37,3 +37,11 @@ Route::get('/expenses', function(){
 Route::get('/withdraw', function(){
     return view('pages.withdraw');
 });
+Route::get('/rental-agreement', function(){
+    return view('pages.rentAgreement');
+});
+Route::get('/rent-receipt', function(){
+    return view('pages.rentReceipt');
+});
+Route::get('/dashboardApi', 'HomeController@dashboardApi');
+

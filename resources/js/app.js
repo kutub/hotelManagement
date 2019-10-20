@@ -26,6 +26,10 @@ Vue.component('exampleForm', require('./components/ExampleForm.vue').default);
 Vue.component('deposit', require('./components/Deposit.vue').default);
 Vue.component('expenses', require('./components/Expenses.vue').default);
 Vue.component('withdraw', require('./components/Withdraw.vue').default);
+Vue.component('rentReceipt', require('./components/RentReceipt.vue').default);
+Vue.component('booking', require('./components/Booking.vue').default);
+Vue.component('rentalAgreement', require('./components/RentalAgreement.vue').default);
+Vue.component('dashboard', require('./components/Dashboard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
